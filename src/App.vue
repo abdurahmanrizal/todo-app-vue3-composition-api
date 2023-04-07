@@ -4,13 +4,7 @@
       <div class="card-body">
         <h5 class="card-title">SIMPLE TODO APP</h5>
         <div class="row">
-          <div class="col-11">
-            <input
-              type="text"
-              class="form-control"
-              v-model="todo"
-              @keyup.enter="add" />
-          </div>
+          <Input v-model="todo" @add="add" />
           <div class="col-1">
             <button class="btn btn-success text-white shadow" @click="add">
               ADD +
@@ -40,8 +34,9 @@
 import { computed, onMounted, reactive, ref } from "vue";
 import List from "./components/List.vue";
 import Search from "./components/Search.vue";
+import Input from "./components/Input.vue";
 export default {
-  components: { List, Search },
+  components: { List, Search, Input },
   setup() {
     const todo = ref("");
     const searchValue = ref("");
@@ -64,7 +59,6 @@ export default {
     const totalTodoDone = computed(
       () => searchByValue(todos.lists, searchValue.value, 1).length
     );
-
     // method untuk melakukan penambahan TODO
     const add = () => {
       todos.lists.unshift({
