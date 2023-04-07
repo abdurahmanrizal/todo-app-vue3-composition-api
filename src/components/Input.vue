@@ -3,7 +3,7 @@
     <input
       type="text"
       class="form-control"
-      @input="$emit('update:modelValue', $event.target.value ?? '')"
+      @input="$emit('update:modelValue', $event.target.value)"
       @keyup.enter="add"
       :value="modelValue" />
   </div>
